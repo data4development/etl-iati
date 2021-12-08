@@ -1,0 +1,19 @@
+{
+  "rdbms": {
+    "POSTGRESQL": {
+      "databaseName": "${DWB_DB_NAME}",
+      "pluginId": "POSTGRESQL",
+      "indexTablespace": "",
+      "dataTablespace": "",
+      "accessType": 0,
+      "hostname": "${DWB_DB_HOST}",
+      "password": "${DWB_DB_PASSWORD}",
+      "port": "${DWB_DB_PORT}",
+      "pluginName": "PostgreSQL",
+      "servername": "",
+      "attributes": {},
+      "username": "${DWB_DB_USERNAME}"
+    }
+  },
+  "name": "dataworkbench"
+}
