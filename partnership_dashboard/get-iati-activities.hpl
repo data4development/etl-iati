@@ -38,26 +38,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   </info>
   <notepads>
     <notepad>
-      <note>create an IATI file with the activities</note>
-      <xloc>1184</xloc>
-      <yloc>256</yloc>
-      <width>275</width>
-      <heigth>29</heigth>
-      <fontname>Alegreya Sans</fontname>
-      <fontsize>11</fontsize>
-      <fontbold>N</fontbold>
-      <fontitalic>N</fontitalic>
-      <fontcolorred>0</fontcolorred>
-      <fontcolorgreen>0</fontcolorgreen>
-      <fontcolorblue>0</fontcolorblue>
-      <backgroundcolorred>255</backgroundcolorred>
-      <backgroundcolorgreen>205</backgroundcolorgreen>
-      <backgroundcolorblue>112</backgroundcolorblue>
-      <bordercolorred>100</bordercolorred>
-      <bordercolorgreen>100</bordercolorgreen>
-      <bordercolorblue>100</bordercolorblue>
-    </notepad>
-    <notepad>
       <note>select the relevant activities from the input files</note>
       <xloc>464</xloc>
       <yloc>256</yloc>
@@ -185,21 +165,6 @@ date with better value</note>
     <hop>
       <from>Copy</from>
       <to>Lookup activity, organisation dimensions</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Copy</from>
-      <to>Insert activities</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Create &lt;iati-activities/></from>
-      <to>Insert activities</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Insert activities</from>
-      <to>Write to IATI file</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -363,38 +328,6 @@ date with better value</note>
     <GUI>
       <xloc>896</xloc>
       <yloc>336</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>Create &lt;iati-activities/></name>
-    <type>RowGenerator</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <length>-1</length>
-        <name>iati-root</name>
-        <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
-        <type>String</type>
-        <nullif>&lt;iati-activities/></nullif>
-      </field>
-    </fields>
-    <interval_in_ms>5000</interval_in_ms>
-    <last_time_field>FiveSecondsAgo</last_time_field>
-    <never_ending>N</never_ending>
-    <limit>1</limit>
-    <row_time_field>now</row_time_field>
-    <attributes/>
-    <GUI>
-      <xloc>1088</xloc>
-      <yloc>208</yloc>
     </GUI>
   </transform>
   <transform>
@@ -946,34 +879,6 @@ date with better value</note>
     </GUI>
   </transform>
   <transform>
-    <name>Insert activities</name>
-    <type>XMLJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <targetXmlTransform/>
-    <sourceXmlTransform/>
-    <valueXmlField>iati-activities</valueXmlField>
-    <targetXmlField>iati-root</targetXmlField>
-    <sourceXmlField>activity-xml</sourceXmlField>
-    <complexJoin>N</complexJoin>
-    <joinCompareField/>
-    <targetXPath>/iati-activities</targetXPath>
-    <encoding>UTF-8</encoding>
-    <omitXMLHeader>N</omitXMLHeader>
-    <omitNullValues>N</omitNullValues>
-    <attributes/>
-    <GUI>
-      <xloc>1088</xloc>
-      <yloc>336</yloc>
-    </GUI>
-  </transform>
-  <transform>
     <name>Lookup activity, organisation dimensions</name>
     <type>SimpleMapping</type>
     <description/>
@@ -1468,67 +1373,6 @@ date with better value</note>
     <GUI>
       <xloc>896</xloc>
       <yloc>608</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>Write to IATI file</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <separator>;</separator>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>UNIX</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>${ETL_WORKSPACE_PATH}/src/${ETL_PARTNERSHIP_SLUG}</name>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>xml</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>iati-activities</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <attributes/>
-    <GUI>
-      <xloc>1248</xloc>
-      <yloc>336</yloc>
     </GUI>
   </transform>
   <transform_error_handling>
