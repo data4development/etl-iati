@@ -5,6 +5,10 @@
   "enforcingExecutionInHome" : true,
   "parentProjectName" : "default",
   "config" : {
-    "variables" : [ ]
+    "variables" : [ {
+      "name" : "HOP_LICENSE_HEADER_FILE",
+      "value" : "${PROJECT_HOME}/License-header",
+      "description" : "AGPL license text."
+    } ]
   }
 }
