@@ -1,0 +1,10 @@
+= {page-component-title}
+
+Using https://hop.apache.org[Apache Hop^] to process IATI data.
+
+== History
+
+In 2005, Kettle started as open source ETL tool, with a visual programming interface.
+It turned into Pentaho Data Integration.
+In 2019, the original authors created a fork to allow experimentation to develop it further.
+The project was brought under the stewardship of the Apache Foundation, and named Hop.
