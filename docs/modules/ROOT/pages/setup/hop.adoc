@@ -1,0 +1,35 @@
+= Hop setup
+
+== Download and install Hop
+
+Download Hop https://hop.apache.org/download/[from the Hop website^].
+
+[NOTE]
+====
+Currently, the easiest approach is to set up the software on the local machine.
+
+There is a Docker version with a web server, 
+where the whole application is served in the browser.
+However, setting this up with a project in a repository is not tested,
+nor documented at this moment.
+====
+
+== Choose a config and audit folder
+
+Hop stores information about your local setup in two folders:
+
+* The config folder has information about your local configuration, 
+projects and environments.
+* The audit folder has logging and history information.
+
+By default, Hop uses folders within the installed application folder.
+This makes it more tricky to replace that with a newer version.
+
+Use environment variables to specify different locations.
+
+.Example alternative locations
+[source, sh]
+----
+HOP_CONFIG_FOLDER=$HOME/hop/config
+HOP_AUDIT_FOLDER=$HOME/hop/audit
+----

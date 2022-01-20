@@ -1,0 +1,7 @@
+** Setup
+*** xref:setup/azure.adoc[]
+*** xref:setup/database.adoc[]
+
+** Maintenance and development
+*** xref:project-layout.adoc[]
+*** xref:setup/hop.adoc[]

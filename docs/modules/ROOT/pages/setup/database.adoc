@@ -1,0 +1,21 @@
+= Database setup
+
+Prerequisites::
+* An Azure environment with SQL database and access credentials.
+
+== Initialising the database
+
+The ETL container expects the database to be prepared,
+containing the appropriate tables and preloaded dimension tables.
+
+This can be done using an SQL tool to manage the Azure database.
+We use https://dbeaver.io/[DBeaver^], an open source tool.
+
+It should also be possible to use 
+https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms[Microsoft 
+SQL Server Management Studio (SSMS)^].
+
+1. Run the tables setup script `Scripts/azure-database-setup.sql`.
+2. Run the views setup script `Scripts/azure-views-setup.sql`.
+3. Import the CSV file `datasets/dim_date.csv` into table `dim_date`.
+4. Import the CSV file `datasets/dim_countries.csv` into table `dim_countries`.

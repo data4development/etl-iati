@@ -1,0 +1,35 @@
+= Azure setup
+
+This part deals with setting up the Microsoft Azure environment.
+
+Prerequisites::
+* A Microsoft Azure account and subscription.
+
+Result::
+* The Azure environment contains a database that can be read from PowerBI.
+* The Azure environment is ready to run a container image.
+
+Next::
+* Preparing the database.
+
+== Azure SQL database
+
+We use a _Basic_ tier SQL database 
+using Microsoft's DTU-based purchase model.
+
+* This type of database is intended for development purposes.
+
+* We only use it to store the data coming from the ETL process,
+and as a source to automatically refresh once a day for PowerBI.
+Once read into PowerBI, the dashboard uses the copied dataset, not the database.
+
+* The amount of data is limited and fits within the current 2GB database size.
+
+* We use the default schema _dbo_.
+
+== Azure Container run
+
+Intended to run a container without having to manage infrastructure.
+
+Our container runs a batch job once a day, 
+which normally should take a very limited amount of time.

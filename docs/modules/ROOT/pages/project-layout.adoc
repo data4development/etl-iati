@@ -1,0 +1,28 @@
+= Project layout
+
+[source, treeview]
+----
+<repository>
+├── Diagrams # <.>
+├── Scripts # <.>
+├── docs
+├── ...
+├── datasets # <.>
+├── metadata
+├── tests
+├── project-config.json
+├── License-header
+├── ...
+├── .versionrc.json # <.>
+└── ...
+----
+<.> ERD diagrams, managed with DBeaver
+<.> SQL scripts for database setup and migration
+<.> Apache Hop folders and files
+[horizontal]
+`datasets`:: CSV data
+`metadata`:: project-specific metadata (database connections used, etc.)
+`tests`:: ETL test scenarios
+`project-config.json`:: project configuration
+`License-header`:: automatically inserted into Hop source files
+<.> Setup for standard-version for semantic releases.
