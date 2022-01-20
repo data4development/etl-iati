@@ -167,6 +167,42 @@ BEGIN
   [country-id] [bigint],
   [country-percentage] [NUMERIC](9, 6) CONSTRAINT [DF_fct_budgets_country-percentage] DEFAULT 100,
   CONSTRAINT [fct_budgets_pk] PRIMARY KEY ([budgetline-id]));
+
+  ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_activities_fk] 
+  FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+
+  ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_countries_fk] 
+  FOREIGN KEY ([country-id]) REFERENCES [dim_countries] ([country-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
+  ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_date_end_fk] 
+  FOREIGN KEY ([period-end]) REFERENCES [dim_date] ([date_id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
+  ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_date_start_fk] 
+  FOREIGN KEY ([period-start]) REFERENCES [dim_date] ([date_id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
+  ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_organisations_fk] 
+  FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
 END
 
 IF (NOT EXISTS (SELECT * 
@@ -182,6 +218,27 @@ BEGIN
   [organisation-id] [bigint] NOT NULL,
   [percentage] [NUMERIC](9, 6),
   CONSTRAINT [fct_countries_regions_pk] PRIMARY KEY ([country-region-id]));
+
+  ALTER TABLE [fct_countries_regions] ADD CONSTRAINT [fct_countries_regions_dim_activities_fk] 
+  FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+
+  ALTER TABLE [fct_countries_regions] ADD CONSTRAINT [fct_countries_regions_dim_countries_fk] 
+  FOREIGN KEY ([country-id]) REFERENCES [dim_countries] ([country-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
+  ALTER TABLE [fct_countries_regions] ADD CONSTRAINT [fct_countries_regions_dim_organisations_fk] 
+  FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
 END
 
 IF (NOT EXISTS (SELECT * 
@@ -200,6 +257,34 @@ BEGIN
   [baseline-value] [NUMERIC](18,6),
   [baseline-comment] [varchar](MAX),
   CONSTRAINT [fct_baselines_pk] PRIMARY KEY ([baseline-id]));
+
+  ALTER TABLE [fct_baselines] ADD CONSTRAINT [fct_baselines_dim_activities_fk] 
+  FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+
+  ALTER TABLE [fct_baselines] ADD CONSTRAINT [fct_baselines_dim_organisations_fk] 
+  FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
+  ALTER TABLE [fct_baselines] ADD CONSTRAINT [fct_baselines_dim_indicators_fk] 
+  FOREIGN KEY ([indicator-id]) REFERENCES [dim_indicators] ([indicator-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
+  ALTER TABLE [fct_baselines] ADD CONSTRAINT [fct_baselines_dim_results_fk] 
+  FOREIGN KEY ([result-id]) REFERENCES [dim_results] ([result-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
 END
 
 IF (NOT EXISTS (SELECT * 
@@ -221,6 +306,34 @@ BEGIN
   [target-comment] [varchar](MAX),
   [actual-comment] [varchar](MAX),
   CONSTRAINT [fct_results_pk] PRIMARY KEY ([resultline-id]));
+
+  ALTER TABLE [fct_results] ADD CONSTRAINT [fct_results_dim_activities_fk] 
+  FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+
+  ALTER TABLE [fct_results] ADD CONSTRAINT [fct_results_dim_organisations_fk] 
+  FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
+  ALTER TABLE [fct_results] ADD CONSTRAINT [fct_results_dim_indicators_fk] 
+  FOREIGN KEY ([indicator-id]) REFERENCES [dim_indicators] ([indicator-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
+  ALTER TABLE [fct_results] ADD CONSTRAINT [fct_results_dim_results_fk] 
+  FOREIGN KEY ([result-id]) REFERENCES [dim_results] ([result-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
 END
 
 IF (NOT EXISTS (SELECT * 
@@ -245,6 +358,27 @@ BEGIN
   [expenditure] [NUMERIC](18,3),
   [incoming-commitment] [NUMERIC](18,3),
   [outgoing-commitment] [NUMERIC](18,3));
+
+  ALTER TABLE [fct_transactions] ADD CONSTRAINT [fct_transactions_dim_activities_fk] 
+  FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+
+  ALTER TABLE [fct_transactions] ADD CONSTRAINT [fct_transactions_dim_date_fk] 
+  FOREIGN KEY ([date]) REFERENCES [dim_date] ([date_id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
+  
+  ALTER TABLE [fct_transactions] ADD CONSTRAINT [fct_transactions_dim_organisations_fk] 
+  FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
+  UPDATE
+    NO ACTION ON
+    DELETE
+    NO ACTION;
 END
 
 IF (NOT EXISTS (SELECT * 
@@ -257,119 +391,6 @@ BEGIN
   [label] [varchar](MAX));
 END
 
-ALTER TABLE [fct_baselines] ADD CONSTRAINT [fct_baselines_dim_activities_fk] FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_activities_fk] FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_countries_regions] ADD CONSTRAINT [fct_countries_regions_dim_activities_fk] FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_results] ADD CONSTRAINT [fct_results_dim_activities_fk] FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_transactions] ADD CONSTRAINT [fct_transactions_dim_activities_fk] FOREIGN KEY ([activity-id]) REFERENCES [dim_activities] ([activity-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_countries_fk] FOREIGN KEY ([country-id]) REFERENCES [dim_countries] ([country-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_countries_regions] ADD CONSTRAINT [fct_countries_regions_dim_countries_fk] FOREIGN KEY ([country-id]) REFERENCES [dim_countries] ([country-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_date_end_fk] FOREIGN KEY ([period-end]) REFERENCES [dim_date] ([date_id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_date_start_fk] FOREIGN KEY ([period-start]) REFERENCES [dim_date] ([date_id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_transactions] ADD CONSTRAINT [fct_transactions_dim_date_fk] FOREIGN KEY ([date]) REFERENCES [dim_date] ([date_id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_baselines] ADD CONSTRAINT [fct_baselines_dim_organisations_fk] FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_budgets] ADD CONSTRAINT [fct_budgets_dim_organisations_fk] FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_countries_regions] ADD CONSTRAINT [fct_countries_regions_dim_organisations_fk] FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_results] ADD CONSTRAINT [fct_results_dim_organisations_fk] FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_transactions] ADD CONSTRAINT [fct_transactions_dim_organisations_fk] FOREIGN KEY ([organisation-id]) REFERENCES [dim_organisations] ([organisation-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_baselines] ADD CONSTRAINT [fct_baselines_dim_indicators_fk] FOREIGN KEY ([indicator-id]) REFERENCES [dim_indicators] ([indicator-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_results] ADD CONSTRAINT [fct_results_dim_indicators_fk] FOREIGN KEY ([indicator-id]) REFERENCES [dim_indicators] ([indicator-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_baselines] ADD CONSTRAINT [fct_baselines_dim_results_fk] FOREIGN KEY ([result-id]) REFERENCES [dim_results] ([result-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
-
-ALTER TABLE [fct_results] ADD CONSTRAINT [fct_results_dim_results_fk] FOREIGN KEY ([result-id]) REFERENCES [dim_results] ([result-id]) ON
-UPDATE
-  NO ACTION ON
-  DELETE
-  NO ACTION;
 
 --IF (NOT EXISTS (SELECT * 
 --  FROM INFORMATION_SCHEMA.VIEWS 
