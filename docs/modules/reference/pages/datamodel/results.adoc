@@ -1,0 +1,5 @@
+= Dimensional model: results
+:navtitle: Results
+
+.Result facts and dimensions
+image::results.png[]

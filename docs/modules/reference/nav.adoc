@@ -1,3 +1,7 @@
 * Reference
 
 ** xref:project-layout.adoc[]
+
+** Data model
+*** xref:datamodel/finances.adoc[]
+*** xref:datamodel/results.adoc[]

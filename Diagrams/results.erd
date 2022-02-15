@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="results.erd">
+	<entities>
+		<data-source id="postgres-jdbc-17e72ebd8b0-5c14a8464d50694f">
+			<entity id="1" name="dim_activities" fq-name="public.dim_activities" order="0" color-bg="220,138,221" border-width="3" x="800" y="320">
+				<path name="public"/>
+				<path name="dra"/>
+			</entity>
+			<entity id="2" name="dim_date" fq-name="public.dim_date" order="1" color-bg="220,138,221" x="260" y="20">
+				<path name="public"/>
+				<path name="dra"/>
+			</entity>
+			<entity id="3" name="dim_indicators" fq-name="public.dim_indicators" order="2" color-bg="220,138,221" border-width="3" x="700" y="800">
+				<path name="public"/>
+				<path name="dra"/>
+			</entity>
+			<entity id="4" name="dim_organisations" fq-name="public.dim_organisations" order="3" color-bg="220,138,221" border-width="3" x="800" y="20">
+				<path name="public"/>
+				<path name="dra"/>
+			</entity>
+			<entity id="5" name="dim_results" fq-name="public.dim_results" order="4" color-bg="220,138,221" border-width="3" x="420" y="800">
+				<path name="public"/>
+				<path name="dra"/>
+			</entity>
+			<entity id="6" name="fct_baselines" fq-name="public.fct_baselines" order="5" color-bg="153,193,241" x="580" y="480">
+				<path name="public"/>
+				<path name="dra"/>
+			</entity>
+			<entity id="7" name="fct_results" fq-name="public.fct_results" order="6" color-bg="153,193,241" x="580" y="20">
+				<path name="public"/>
+				<path name="dra"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations>
+		<relation name="fct_baselines_dim_activities_fk" fq-name="public.fct_baselines.fct_baselines_dim_activities_fk" type="fk" pk-ref="1" fk-ref="6"/>
+		<relation name="fct_results_dim_activities_fk" fq-name="public.fct_results.fct_results_dim_activities_fk" type="fk" pk-ref="1" fk-ref="7"/>
+		<relation name="fct_baselines_dim_indicators_fk" fq-name="public.fct_baselines.fct_baselines_dim_indicators_fk" type="fk" pk-ref="3" fk-ref="6"/>
+		<relation name="fct_results_dim_indicators_fk" fq-name="public.fct_results.fct_results_dim_indicators_fk" type="fk" pk-ref="3" fk-ref="7"/>
+		<relation name="fct_baselines_dim_organisations_fk" fq-name="public.fct_baselines.fct_baselines_dim_organisations_fk" type="fk" pk-ref="4" fk-ref="6"/>
+		<relation name="fct_results_dim_organisations_fk" fq-name="public.fct_results.fct_results_dim_organisations_fk" type="fk" pk-ref="4" fk-ref="7"/>
+		<relation name="fct_baselines_dim_results_fk" fq-name="public.fct_baselines.fct_baselines_dim_results_fk" type="fk" pk-ref="5" fk-ref="6"/>
+		<relation name="fct_results_dim_results_fk" fq-name="public.fct_results.fct_results_dim_results_fk" type="fk" pk-ref="5" fk-ref="7"/>
+	</relations>
+</diagram>

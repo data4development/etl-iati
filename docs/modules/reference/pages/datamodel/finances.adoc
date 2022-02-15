@@ -1,0 +1,5 @@
+= Dimensional model: finances
+:navtitle: Finances
+
+.Financial facts and dimensions
+image::financial.png[]
