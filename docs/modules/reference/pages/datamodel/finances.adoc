@@ -1,5 +1,24 @@
 = Dimensional model: finances
 :navtitle: Finances
 
+== Processing
+
+=== Facts table _fct_budgets_
+
+Budgets are split per year::
+If a budget period spans multiple calendar years, it is divided in portions per calendar year.
+The ratio is determined by the number of days in each year:
+an activity from 1-1-2020 to 30-6-2021 will have two-thirds of the budget in 2020
+and one-third in year 2021.
+
+Budgets are also split per country and region::
+The budget-per-year is also split per country or region, based on the percentage is the data.
+
+=== Facts table _fct_transactions_
+
+Transaction values per type::
+The transaction values are stored in separate fields depending on the transaction type.
+Not all transaction types are included yet.
+
 .Financial facts and dimensions
 image::financial.png[]

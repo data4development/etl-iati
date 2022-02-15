@@ -1,0 +1,37 @@
+= ETL process
+
+== Overview
+
+The data processing process:
+
+Gather source files::
+Gather the IATI source data files of the organisations in a programme.
+
+Gather programme information::
+The spreadsheet `partnership-info` contains information about the required content.
++
+* Sheet _joint reponses_: list of programmes to include
+(programme name, top-level activity identifier).
+* Sheet _results_: result and indicator reference codes to include in the dashboard
+(results subtheme, official result and indicator title)
+* Sheet _dimensions_: translation table from published dimension names and values
+to "official" names and values.
+
+Find downstream activities::
+XSLT script that uses the sheet of _joint responses_ as starting point,
+and looks for linked activities.
++
+The result is a list of all activities to be included in the ETL process,
+as well as a single IATI XML file with all activities.
+
+Run the ETL process::
+This uses Apache Hop to process the raw data file.
+It creates the dimension tables, and the fact tables for budgets, transactions,
+and results.
++
+The data is stored in a Postgres or Azure SQL database.
+
+Update the PowerBI dashboard::
+The PowerBI service can automatically refresh the data from an Azure SQL database.
+When working with a (local or cloud-based) Postgres database,
+the dashboard needs to be refreshed manually from within the PowerBI desktop application.

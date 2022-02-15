@@ -1,0 +1,38 @@
+= Data model
+
+== Dimensional model: general dimensions
+
+These dimensions are commonly used.
+
+=== _dim_date_
+
+This is a generic table with fields to make aggregation and presentation easier.
+
+=== _dim_organisations_
+
+Organisation identifier and name.
+
+[NOTE]
+====
+The table is set up as _historical dimension table_
+with fields for the version and period that version is valid.
+We don't use the historical aspect.
+====
+
+=== _dim_activities_
+
+Activity information,
+hierarchical level and parent in a programme (or partnership),
+partnership title and identifier.
+
+This allows grouping per programme.
+
+NOTE: This is also seet up as _historical dimension_.
+
+=== _dim_countries_
+
+Country code, country name according to IATI, country name according to MinBuza,
+region name according to IATI and to MinBuza,
+information about income class, fragility and LDC status.
+
+NOTE: This is also seet up as _historical dimension_.

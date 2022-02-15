@@ -2,7 +2,7 @@
 
 Using https://hop.apache.org[Apache Hop^] to process IATI data.
 
-The code processes IATI XML data to produce content in a Postgres database.
+The code processes IATI XML data to produce content in a Postgres or Azure SQL database.
 The data is put into a dimensional model
 to allow different analytics platforms
 to present the data in dashboards and reports.
@@ -15,6 +15,35 @@ and _project_ activities on the bottom level.
 The same spreadsheet is also used to define IATI result indicators to show.
 In addition, it contains a mapping table for disaggregated data.
 These tables help standardise the presentation of data.
+
+== Additions to IATI data
+
+In addition to IATI data, the following data is used:
+
+Programme name::
+A programme (or partnership, joint response) consists of a group of organisations
+that each publish one or more activities, and that should be presented together.
++
+The programme has a name,
+and typically a tree structure with a single top-level activity,
+with links via parent-child relations and financial transactions.
++
+With sufficient data quality, only the top-level activity identifier needs to be specified.
+If needed, more activities can be explicitly added to the list.
+
+Results framework::
+The programme has a result framework it wants to use in its dashboards and reports.
++
+IATI results are presented based on a set of indicator reference codes.
++
+Results are further grouped in "themes",
+each with one or more results and underlying indicators.
++
+Results and indicators have "official titles" in dashboards and reports,
+independent of the actual texts published by each organisation.
++
+Dimensions are processed based on a set of standard dimension names and values.
+Since these are text strings, common variations are translated into an "official text".
 
 == History
 
