@@ -1,6 +1,6 @@
 name: etl-iati
 title: ETL for IATI
-version: ~
+version: next
 prerelease: true
 nav:
 - modules/ROOT/nav.adoc
