@@ -1,0 +1,6 @@
+* How to
+
+** Set up
+*** xref:setup/hop.adoc[]
+*** xref:setup/azure.adoc[]
+*** xref:setup/database.adoc[]

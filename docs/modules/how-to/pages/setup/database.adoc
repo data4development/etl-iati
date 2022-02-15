@@ -1,4 +1,5 @@
-= Database setup
+= Set up the dashboard database
+:navtitle: database
 
 Prerequisites::
 * An Azure environment with SQL database and access credentials.
@@ -11,8 +12,8 @@ containing the appropriate tables and preloaded dimension tables.
 This can be done using an SQL tool to manage the Azure database.
 We use https://dbeaver.io/[DBeaver^], an open source tool.
 
-It should also be possible to use 
-https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms[Microsoft 
+It should also be possible to use
+https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms[Microsoft
 SQL Server Management Studio (SSMS)^].
 
 1. Run the tables setup script `Scripts/azure-database-setup.sql`.

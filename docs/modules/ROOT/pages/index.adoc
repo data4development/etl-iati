@@ -3,8 +3,8 @@
 Using https://hop.apache.org[Apache Hop^] to process IATI data.
 
 The code processes IATI XML data to produce content in a Postgres database.
-The data is put into a dimensional model 
-to allow different analytics platforms 
+The data is put into a dimensional model
+to allow different analytics platforms
 to present the data in dashboards and reports.
 
 The code uses a spreadsheet with "seed activities" as a starting point.
@@ -32,9 +32,3 @@ we migrated our PDI code to Hop.
 
 Apache Hop code can be run on a local machine,
 and also be deployed to cloud services via Apache Beam.
-
-== Setup
-
-* First, we need to xref:setup/azure.adoc[set up Azure].
-* Next, we xref:setup/database.adoc[prepare the database].
- 

@@ -1,4 +1,5 @@
-= Azure setup
+= Set up Azure
+:navtitle: Azure
 
 This part deals with setting up the Microsoft Azure environment.
 
@@ -14,7 +15,7 @@ Next::
 
 == Azure SQL database
 
-We use a _Basic_ tier SQL database 
+We use a _Basic_ tier SQL database
 using Microsoft's DTU-based purchase model.
 
 * This type of database is intended for development purposes.
@@ -31,5 +32,5 @@ Once read into PowerBI, the dashboard uses the copied dataset, not the database.
 
 Intended to run a container without having to manage infrastructure.
 
-Our container runs a batch job once a day, 
+Our container runs a batch job once a day,
 which normally should take a very limited amount of time.

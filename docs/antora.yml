@@ -4,3 +4,5 @@ version: ~
 prerelease: true
 nav:
 - modules/ROOT/nav.adoc
+- modules/how-to/nav.adoc
+- modules/reference/nav.adoc
